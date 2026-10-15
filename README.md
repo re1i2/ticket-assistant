@@ -1,20 +1,21 @@
-# Intelligent Support Ticket Assistant (English + Arabic)
+# Intelligent Support Ticket Assistant 
 
 **Use case:** 1 · Intelligent Support Ticket Assistant · **Demo:** `python app.py`
 Capstone for SDAIA Academy *Applied NLP Engineering* (https://sdaiaacademy.github.io/applied-nlp/).
 
-## تشغيل سريع (Arabic quick start)
+## Quick start
 
 ```bash
-python -m venv .venv && source .venv/bin/activate        # Windows: .venv\Scripts\activate
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m src.prepare_data          # يحمّل بيانات Bitext ويجهّز التقسيم (يحتاج إنترنت)
-python -m src.train --config configs/final.yaml   # تدريب الموديل (يفضّل GPU / Colab)
-python app.py                       # الواجهة على http://127.0.0.1:7860
+python -m src.prepare_data
+python -m src.train --config configs/final.yaml
+python app.py
 ```
 
-لو ما عندك GPU: استخدم `configs/quick.yaml` (إيبوك واحد) أو شغّل `notebooks/colab_run.ipynb` على Colab مع T4.
-بدون تدريب، `python app.py` يشتغل أيضاً بالموديل الأساسي (e5 + LR) ويكتب لك في الطرفية أي مصنّف يستخدم.
+On Windows, activate the environment with `.venv\Scripts\activate`. The demo runs at http://127.0.0.1:7860.
+
+Without a GPU, train with `configs/quick.yaml` (one epoch) or run `notebooks/colab_run.ipynb` on Colab with a T4 GPU. Without training, `python app.py` falls back to the baseline classifier (e5 embeddings + logistic regression) and prints which classifier is in use.
 
 ## Problem
 
@@ -24,15 +25,15 @@ resolved tickets, relevant help-center sections and a grounded, cited draft repl
 it is not confident), **measured by** macro-F1 of the intent on three held-out test sets, plus retrieval Hit@k/MRR
 and reply-grounding checks.
 
-## Requirements checklist 
+## Requirements checklist
 
 | Minimum requirement | Where |
 |---|---|
 | 1. Working end-to-end pipeline + demo | `src/pipeline.py` (`assist(text)`), `app.py` (Gradio) |
 | 2. Representation + decision/generation component | e5 embeddings (`src/utils.py`, `src/retrieval.py`); classifier (`src/classifier.py`); grounded reply (`src/pipeline.py`) |
-| 3. Baseline + ≥1 improvement on the same held-out test set | `src/run_experiments.py`: `tfidf_lr` → `e5_lr` (course baseline) → `finetuned_*`; retrieval: dense → BM25 → hybrid → hybrid+rerank |
+| 3. Baseline + ≥1 improvement on the same held-out test set | `src/run_experiments.py`: `tfidf_lr` → `e5_lr` (baseline) → `finetuned_*`; retrieval: dense → BM25 → hybrid → hybrid+rerank |
 | 4. Fine-tuning (encoder or LoRA) or justified alternative | `src/train.py` + `configs/*.yaml` (encoder fine-tuning, early stopping, temperature calibration) |
-| 5. Metrics by slice + error analysis with ≥10 categorised failures | `eval/evaluate.py` (slices: set, lang, dialect), `eval/error_analysis.py` (exports a CSV you categorise by hand) |
+| 5. Metrics by slice + error analysis with ≥10 categorised failures | `eval/evaluate.py` (slices: set, lang, dialect), `eval/error_analysis.py` (exports a CSV for manual categorisation) |
 
 ## Data
 
@@ -41,12 +42,12 @@ and reply-grounding checks.
 | train | ≈ 5,400 (200 / intent) | English | Bitext customer-support dataset (CDLA-Sharing-1.0), via `src/prepare_data.py` |
 | validation | ≈ 1,080 (40 / intent) | English | same |
 | test `en_test` | ≈ 1,080 (40 / intent) | English, **templated** (optimistic) | same |
-| test `ar_test` | 108 | Arabic: 54 MSA + 54 Gulf, hand-written | `data/arabic_tickets.csv` (course repo) |
+| test `ar_test` | 108 | Arabic: 54 MSA + 54 Gulf, hand-written | `data/arabic_tickets.csv` |
 | test `hard_en` | 49 | Messy English: typos, anger, run-ons, hand-written | `data/hard_en_tickets.csv` (written for this project) |
 | history (search index) | up to 8,000 resolved tickets with agent replies | English | Bitext |
-| help center (RAG KB) | 10 articles, 33 sections | English, fictional store DemoMart | `data/kb/` (course repo) |
+| help center (RAG KB) | 10 articles, 33 sections | English, fictional store DemoMart | `data/kb/` |
 
-Exact counts after your run are written to `data/split_report.json`. 27 intents, 11 categories, priority = business rule
+Exact counts are written to `data/split_report.json`. 27 intents, 11 categories, priority = business rule
 (`priority_for` in `src/prepare_data.py`).
 
 **Known limitations.** Bitext is templated, so `en_test` scores overstate real-world quality. There is no Arabic
@@ -93,7 +94,7 @@ generation (valid reply rate, gold section cited, escalation rate on unanswerabl
 | System | Macro-F1 en_test | Macro-F1 hard_en | Macro-F1 Arabic | p95 latency | Notes |
 |---|---|---|---|---|---|
 | Lexical floor: char TF-IDF + LR | | | | | |
-| Baseline: e5 embeddings + LR | | | | | course baseline |
+| Baseline: e5 embeddings + LR | | | | | baseline |
 | Fine-tuned multilingual-e5-small | | | | | `configs/final.yaml` |
 | Fine-tuned DistilBERT-multilingual | | | | | `configs/distilbert.yaml` |
 
@@ -118,7 +119,7 @@ This writes `eval/error_analysis.csv` with a heuristic `auto_cause` for each fai
 ## Reproduce
 
 ```bash
-pip install -r requirements.txt          # or: uv sync
+pip install -r requirements.txt
 python -m src.prepare_data
 python -m src.train --config configs/final.yaml
 python -m src.run_experiments --tau 0.5
