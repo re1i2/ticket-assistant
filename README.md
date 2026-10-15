@@ -157,5 +157,3 @@ With two more weeks: collect and label real Arabic tickets for training (via `ex
 intent head, LoRA-tune a small LLM on resolved replies and compare it with RAG, translate-and-retrieve for Arabic KB
 queries, and calibrate `tau` per language from a labelled validation set in each language.
 
-Data credits: Bitext customer-support dataset (CDLA-Sharing-1.0); the Arabic tickets, KB and `rag_eval.csv` come from the
-course repository https://github.com/SDAIAAcademy/applied-nlp.
