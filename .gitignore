@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+cache/
+artifacts/
+*_ckpt/
+.env
+data/tickets_*.csv
+data/labels.json
+data/split_report.json
