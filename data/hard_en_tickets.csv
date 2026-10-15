@@ -1,0 +1,50 @@
+text,intent
+"I was charged twice for order A-55821, fix it now!",payment_issue
+hey my card got declined but money left my account anyway??,payment_issue
+"the payment page just keeps spinning and then says error 502, tried 3 times",payment_issue
+wheres my stuff. ordered A-30417 nine days ago and tracking hasnt moved,track_order
+"tracking says 'out for delivery' since yesterday morning, nobody came",track_order
+can u tell me when A-77120 will actually get here,track_order
+pls cancel A-90311 i ordered the wrong size,cancel_order
+ordered twice by mistake. kill the second one before it ships,cancel_order
+is there a fee if i cancel after its been packed?,check_cancellation_fee
+what do u charge to cancel an order,check_cancellation_fee
+"i returned the headphones 2 weeks ago, still no money back",track_refund
+status of my refund for A-61822? support told me 5 days and its been 12,track_refund
+"I want my money back, the blender arrived broken",get_refund
+"item not as described. refund please, i have photos",get_refund
+how many days do i have to return something?,check_refund_policy
+do you refund shipping costs on returns,check_refund_policy
+need the vat invoice for order A-12045 for my accountant,get_invoice
+please send me the receipt of my last purchase as pdf,get_invoice
+"invoice INV-2024-00231 has the wrong company name, can you check it",check_invoice
+"i think theres a mistake in my invoice, amount doesnt match what i paid",check_invoice
+forgot my pass and the reset email never arrives,recover_password
+"cant log in anymore, need to reset my password",recover_password
+the verification code never comes to my phone so i cant sign up,registration_problems
+sign up keeps saying my number is already used but i never made an account,registration_problems
+how do i open an account for my company,create_account
+"want to register, whats the process",create_account
+please delete my account and all my data,delete_account
+"close my account permanently, im done with you guys",delete_account
+I moved. how do I change the address on A-55102 before it ships?,change_shipping_address
+"wrong address on my order, need to fix it asap",change_shipping_address
+where do i add a new delivery address to my profile,set_up_shipping_address
+change the phone number on my profile,edit_account
+i want to switch from personal to business account,switch_account
+can i add another item to order A-40091 or is it too late,change_order
+need to swap the color on my order before dispatch,change_order
+do you have same day delivery? live in riyadh,delivery_options
+what shipping options are there to jeddah,delivery_options
+how long will delivery to dammam take,delivery_period
+estimated delivery time for standard shipping?,delivery_period
+"which payment methods do you accept, do you take mada or apple pay",check_payment_methods
+"how do I subscribe to your newsletter, never mind how do i stop getting it",newsletter_subscription
+this is the third time my order is late and nobody answers. absolutely unacceptable service!!,complaint
+"terrible experience, rude agent on the phone. want to file a complaint",complaint
+I'd like to leave a review for the product i bought,review
+i want to talk to a real person not a bot,contact_human_agent
+get me a human agent now,contact_human_agent
+what are your customer service hours and how can i reach you,contact_customer_service
+whats your support phone number,contact_customer_service
+"i wanna buy the item in my cart but checkout wont let me, how do i place the order",place_order
