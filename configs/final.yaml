@@ -1,0 +1,13 @@
+model: intfloat/multilingual-e5-small
+revision: null
+prefix: "query: "
+max_len: 64
+epochs: 5
+lr: 5.0e-5
+batch_size: 32
+weight_decay: 0.01
+warmup_ratio: 0.1
+label_smoothing: 0.05
+patience: 2
+seed: 42
+output_dir: artifacts/encoder
