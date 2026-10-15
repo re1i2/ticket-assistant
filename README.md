@@ -3,7 +3,7 @@
 
 This repository is the capstone project for the **Applied NLP Engineering** bootcamp (AI Engineering Track) at SDAIA Academy: https://sdaiaacademy.github.io/applied-nlp/
 
-It implements the **Intelligent Support Ticket Assistant** use case. Given an English or Arabic customer message, the system identifies the intent, retrieves similar historical cases, assigns a category and priority, and drafts a grounded reply with citations, or escalates to a human agent when it is not confident.
+It implements the **Intelligent Support Ticket Assistant** use case. Given a customer message, the system identifies the intent, retrieves similar historical cases, assigns a category and priority, and drafts a grounded reply with citations, or escalates to a human agent when it is not confident.
 
 The project covers the main topics of the course: tokenization and embeddings, semantic search, decision models, retrieval-augmented generation, encoder fine-tuning, evaluation with error analysis, and a Gradio demo.
 
