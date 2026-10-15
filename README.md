@@ -1,7 +1,5 @@
 # Intelligent Support Ticket Assistant 
 
-**Use case:** 1 · Intelligent Support Ticket Assistant · **Demo:** `python app.py`
-Capstone for SDAIA Academy *Applied NLP Engineering* (https://sdaiaacademy.github.io/applied-nlp/).
 
 ## Quick start
 
